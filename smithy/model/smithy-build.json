@@ -1,0 +1,29 @@
+{
+    "version": "2.0",
+    "projections": {
+        "simple-service-server-sdk": {
+            "imports": [
+                "./main.smithy"
+            ],
+            "plugins": {
+                "rust-server-codegen": {
+                    "service": "com.amazonaws.simple#SimpleService",
+                    "module": "simple-service-server-sdk",
+                    "moduleDescription": "Rust server SDK for the Simple Service",
+                    "moduleVersion": "0.1.0",
+                    "moduleAuthors": [
+                        "David Pérez <d@vidp.dev>"
+                    ],
+                    "runtimeConfig": {
+                        "versions": {
+                            "DEFAULT": "0.55.2"
+                        }
+                    }
+                },
+                "openapi": {
+                    "service": "com.amazonaws.simple#SimpleService"
+                }
+            }
+        }
+    }
+}

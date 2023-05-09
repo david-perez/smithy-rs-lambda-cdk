@@ -1,0 +1,24 @@
+[package]
+name = "lambda"
+version = "0.1.0"
+authors = ["david-perez <d@vidp.dev>"]
+edition = "2021"
+
+[[bin]]
+name = "bootstrap"
+path = "src/bin/bootstrap.rs"
+
+[profile.release]
+panic = 'abort' # Less code to include into binary.
+codegen-units = 1 # Optimization over all codebase (better optimization, slower build).
+opt-level = 'z' # Optimization for size (or 's' for a less aggressive alternative).
+lto = true # Link-time optimization using using whole-program analysis.
+
+[dependencies]
+aws-smithy-http-server = { version = "0.55.2", features = ["aws-lambda"] }
+lambda_http = "0.7.0"
+lambda_runtime = "0.7.0"
+tokio = "1.28"
+simple-service-server-sdk = { path = "../smithy/simple-service-server-sdk" }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter", "json"] }
